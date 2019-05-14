@@ -25,7 +25,7 @@ class TarkariPipeline(object):
 
     def create_table(self):
         self.curr.execute("""DROP TABLE IF EXISTS t_list""")
-        self.curr.execute("""create table t_list(name text, unit text, maximum text, minimum text, average text, datee text)""")
+        self.curr.execute("""create table t_list(name text, unit text, maximum text, minimum text, average text COLLATE utf8_unicode_ci NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci""")
 
     def process_item(self, item, spider):
         self.store_db(item)
@@ -34,13 +34,12 @@ class TarkariPipeline(object):
     def store_db(self, item):
         print('here')
         for index, elem in enumerate(item['name']):
-            self.curr.execute("""insert into t_list(name,unit,minimum,maximum,average, datee) values (%s,%s,%s,%s,%s,%s)""", (
+            self.curr.execute("""insert into t_list(name,unit,minimum,maximum,average) values (%s,%s,%s,%s,%s)""", (
                 item['name'][index],
                 item['unit'][index],
                 item['minimum'][index],
                 item['maximum'][index],
                 item['average'][index],
-                item['datee'],
             ))
         self.conn.commit()
 

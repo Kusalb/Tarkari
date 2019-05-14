@@ -17,5 +17,5 @@ class TarkariItem(scrapy.Item):
     maximum = scrapy.Field()
     average = scrapy.Field()
     price = scrapy.Field()
-    datee = scrapy.Field()
+    # datee = scrapy.Field()
     pass

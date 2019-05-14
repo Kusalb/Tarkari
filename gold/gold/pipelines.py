@@ -27,7 +27,7 @@ class GoldPipeline(object):
 
     def create_table(self):
         self.curr.execute("""DROP TABLE IF EXISTS g_list""")
-        self.curr.execute("""create table g_list(product text, weight text, currency text, price text, datee text)""")
+        self.curr.execute("""create table g_list(product text, weight text, price text, datee text)""")
 
 
     def process_item(self, item, spider):
@@ -37,10 +37,9 @@ class GoldPipeline(object):
     def store_db(self, item):
         for index, elem in enumerate(item['product']):
             print(item['datee'])
-            self.curr.execute("""insert into g_list(product,weight,currency,price,datee) values (%s,%s,%s,%s,%s)""", (
+            self.curr.execute("""insert into g_list(product,weight,price,datee) values (%s,%s,%s,%s)""", (
                 item['product'][index],
                 item['weight'][index],
-                item['currency'][index],
                 item['price'][index],
                 item['datee'],
             ))

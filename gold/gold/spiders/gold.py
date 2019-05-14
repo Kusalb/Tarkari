@@ -30,23 +30,17 @@ class GoldSpider(scrapy.Spider):
             count += 1
 
         for i in info:
-            if (count % 6 == 2):
-                currency.append(i)
-            count += 1
-
-        for i in info:
             if (count % 6 == 4):
                 price.append(i)
             count += 1
-        j=0
+
         datee = date[1] + ' '+ date[0] +', ' +date[2]
 
         print(datee)
         items['product'] = product
         items['weight'] = weight
-        items['currency'] = currency
+        # items['currency'] = currency
         items['price'] = price
         items['datee'] = datee
-
         yield items
 

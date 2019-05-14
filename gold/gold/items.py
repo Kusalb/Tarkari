@@ -15,7 +15,7 @@ class GoldItem(scrapy.Item):
     info = scrapy.Field()
     product = scrapy.Field()
     weight = scrapy.Field()
-    currency = scrapy.Field()
+    # currency = scrapy.Field()
     price = scrapy.Field()
     datee = scrapy.Field()
     pass
