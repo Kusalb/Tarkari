@@ -41,6 +41,6 @@ class GoldSpider(scrapy.Spider):
         items['weight'] = weight
         # items['currency'] = currency
         items['price'] = price
-        items['datee'] = datee
+        items['dat  ee'] = datee
         yield items
 
